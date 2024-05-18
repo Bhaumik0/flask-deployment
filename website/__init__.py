@@ -7,7 +7,7 @@ db = SQLAlchemy()
 DB_NAME = "database.db"
 
 
-def blog():
+def app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = "bhaumik26"
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
