@@ -34,6 +34,7 @@ def app(environ, start_response):
 
 
     return app
+    return [b"Hello, World!"]
 
 def create_database(app):
     if not path.exists("website/"+DB_NAME):
