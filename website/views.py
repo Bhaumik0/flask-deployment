@@ -1,7 +1,8 @@
-from flask import Blueprint, render_template, request, flash, redirect, url_for
+from flask import Blueprint, render_template, request, flash, redirect, url_for,send_from_directory
 from flask_login import login_required, current_user
 from .models import Post, User
 from . import db
+import os
 
 views = Blueprint("views", __name__)
 
@@ -12,6 +13,10 @@ views = Blueprint("views", __name__)
 def home():
     posts = Post.query.all()
     return render_template("home.html", user=current_user, posts=posts)
+
+@views.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(views.root_path, 'static'),'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 @views.route("/flask-crud")
 def flask_crud():

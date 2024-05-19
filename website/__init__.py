@@ -7,8 +7,7 @@ db = SQLAlchemy()
 DB_NAME = "database.db"
 
 
-def app(environ, start_response):
-    start_response('200 OK', [('Content-Type', 'text/plain')])    
+def app():    
     app = Flask(__name__)
     app.config['SECRET_KEY'] = "bhaumik26"
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
@@ -34,7 +33,7 @@ def app(environ, start_response):
 
 
     return app
-    return [b"Hello, World!"]
+    
 
 def create_database(app):
     if not path.exists("website/"+DB_NAME):
